@@ -1,0 +1,28 @@
+{
+    "name": "tools",
+    "version": "1.0.0",
+    "description": "simple tools",
+    "main": "js/index.js",
+    "author": "MHK",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/INFINITY-IT/tools.git",
+        "web": "https://github.com/INFINITY-IT/tools"
+    },
+    "engines": {},
+    "dependencies": {
+        "axios": "*",
+        "browser": "*",
+        "buffer": "*",
+        "lodash": "*",
+        "process": "*"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/INFINITY-IT/tools/issues"
+    },
+    "homepage": "https://github.com/INFINITY-IT/tools#readme"
+}
