@@ -1,5 +1,5 @@
-import FormError from './FormError'
-import {fill2Objects, isObject} from './object-fn'
+import FormError from './FormError.js'
+import {fill2Objects, isObject} from './object-fn.js'
 import axios from 'axios'
 
 /**

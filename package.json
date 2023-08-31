@@ -16,7 +16,8 @@
         "buffer": "*",
         "lodash": "*",
         "process": "*",
-        "sweetalert": "^2.1.2"
+        "sweetalert": "^2.1.2",
+        "vuelidate": "*"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,5 +26,6 @@
     "bugs": {
         "url": "https://github.com/INFINITY-IT/tools/issues"
     },
-    "homepage": "https://github.com/INFINITY-IT/tools#readme"
+    "homepage": "https://github.com/INFINITY-IT/tools#readme",
+    "type": "module"
 }

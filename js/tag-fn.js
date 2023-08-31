@@ -1,4 +1,4 @@
-import {addArraySum} from './array-fn'
+import {addArraySum} from './array-fn.js'
 
 export const
     /**

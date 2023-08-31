@@ -1,4 +1,4 @@
-import {isObject} from './object-fn'
+import {isObject} from './object-fn.js'
 
 class FormError {
     constructor() {

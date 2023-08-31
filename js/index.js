@@ -1,20 +1,20 @@
-export {default as MyForm} from './MyForm'
-export {default as EventBus} from './EventBus'
-export {default as hasPagination} from './HasPagination'
-export * from './swal-fn'
-export * from './app-trans'
-export * from './object-fn'
-export * from './url-fn'
-export * from './tag-fn'
-export * from './number-fn'
-export * from './crypt-fn'
-export * from './csrf-fn'
-export * from './config-fn'
-export * from './array-fn'
+export {default as MyForm} from './MyForm.js'
+export {default as EventBus} from './EventBus.js'
+export {default as hasPagination} from './HasPagination.js'
+export * from './swal-fn.js'
+export * from './app-trans.js'
+export * from './object-fn.js'
+export * from './url-fn.js'
+export * from './tag-fn.js'
+export * from './number-fn.js'
+export * from './crypt-fn.js'
+export * from './csrf-fn.js'
+export * from './config-fn.js'
+export * from './array-fn.js'
 /**
  * use with Vue.js 2
  */
-import {__, trans} from './app-trans'
+import {__, trans} from './app-trans.js'
 
 export const AppTrans = {
     methods: {__, trans},

@@ -1,6 +1,6 @@
-import {trans} from './app-trans'
+import {trans} from './app-trans.js'
 import swal from 'sweetalert'
-import {isObject} from './object-fn'
+import {isObject} from './object-fn.js'
 
 export const
     /**
@@ -10,6 +10,7 @@ export const
      * @param {string} options.icon - The icon of the alert
      * @param {string} options.confirmText - The text of the confirm button
      * @param {string} options.cancelText - The text of the cancel button
+     * @param {boolean} options.dangerMode - Whether the alert should be red
      */
     swalAskYesNo = (options = {}) => {
         options = isObject(options) ? options : {}
@@ -18,14 +19,15 @@ export const
             title = options.title || '',
             icon = options.icon || 'warning',
             confirmButtonText = options.confirmText || trans('Oui'),
-            cancelButtonText = options.cancelText || trans('Non')
+            cancelButtonText = options.cancelText || trans('Non'),
+            dangerMode = options.dangerMode || false
         return new Promise((resolve, reject) => {
             swal({
                 title: title,
                 text: text,
                 icon: icon,
                 buttons: [cancelButtonText, confirmButtonText],
-                dangerMode: true,
+                dangerMode: dangerMode,
             }).then(confirm => confirm ? resolve() : reject())
         })
     },
@@ -35,42 +37,21 @@ export const
             text = options.text || '',
             title = options.title || '',
             icon = options.icon || 'info',
-            confirmButtonText = options.confirmText || trans('OK')
+            confirmButtonText = options.confirmText || trans('OK'),
+            dangerMode = options.dangerMode || false
         return swal({
             title: title,
             text: text,
             icon: icon,
             button: confirmButtonText,
-            dangerMode: true,
+            dangerMode: dangerMode,
         })
     },
     swalSuccess = (options = {}) => {
         options = isObject(options) ? options : {}
-        let
-            text = options.text || '',
-            title = options.title || '',
-            icon = options.icon || 'success',
-            confirmButtonText = options.confirmText || trans('OK')
-        return swal({
-            title: title,
-            text: text,
-            icon: icon,
-            button: confirmButtonText,
-            dangerMode: true,
-        })
+        return swalInfo({icon: 'success', ...options})
     },
     swalError = (options = {}) => {
         options = isObject(options) ? options : {}
-        let
-            text = options.text || '',
-            title = options.title || '',
-            icon = options.icon || 'error',
-            confirmButtonText = options.confirmText || trans('OK')
-        return swal({
-            title: title,
-            text: text,
-            icon: icon,
-            button: confirmButtonText,
-            dangerMode: true,
-        })
+        return swalInfo({icon: 'error', dangerMode: true, ...options})
     }

@@ -1,4 +1,4 @@
-import {response_decrypt} from './crypt-fn'
+import {response_decrypt} from './crypt-fn.js'
 
 export const csrf_update = (refresh_url, guard, callback = null, axios = null, key = '$BZMf') => {
     fetch(refresh_url, {

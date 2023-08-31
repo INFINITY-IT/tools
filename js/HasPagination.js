@@ -1,4 +1,4 @@
-import {fill2Objects} from './object-fn'
+import {fill2Objects} from './object-fn.js'
 
 const HasPagination = {
     data() {
