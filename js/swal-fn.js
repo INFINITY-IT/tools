@@ -1,4 +1,5 @@
 import {trans} from './app-trans'
+import swal from 'sweetalert'
 
 export const
     /**
@@ -17,7 +18,7 @@ export const
             confirmButtonText = options.confirmText || trans('Oui'),
             cancelButtonText = options.cancelText || trans('Non')
         return new Promise((resolve, reject) => {
-            this.$swal({
+            swal({
                 title: title,
                 text: text,
                 icon: icon,

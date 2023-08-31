@@ -10,6 +10,7 @@ export * from './number-fn'
 export * from './crypt-fn'
 export * from './csrf-fn'
 export * from './config-fn'
+export * from './array-fn'
 /**
  * use with Vue.js 2
  */

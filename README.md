@@ -41,7 +41,7 @@ composer require "infinity-it/tools"
 ### 4. usage
 
 ```javascript
-import {} from 'tools'
+import { /* ... */ } from 'tools'
 ```
 
 ### 5. route
