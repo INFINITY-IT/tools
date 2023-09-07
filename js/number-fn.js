@@ -59,4 +59,13 @@ export const
         }
         return new Intl.NumberFormat(locales, options).format(number)
     },
-    between = (number, min, max) => number >= min && number <= max
+    between = (number, min, max) => number >= min && number <= max,
+    numbersBetween = (min, max, step = 1, include_max = true, sort = true) => {
+        let numbers = []
+        min = isNaN(min) ? 0 : min
+        max = isNaN(max) ? 0 : max
+        for (let i = min; i <= max; i += step) numbers.push(i)
+        if (!numbers.includes(max) && !!include_max) numbers.push(max)
+        if (!!sort) numbers.sort((a, b) => a - b)
+        return numbers
+    }
