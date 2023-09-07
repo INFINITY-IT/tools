@@ -58,4 +58,5 @@ export const
             options.style = 'currency'
         }
         return new Intl.NumberFormat(locales, options).format(number)
-    }
+    },
+    between = (number, min, max) => number >= min && number <= max

@@ -1,7 +1,11 @@
+import {isObject} from './object-fn.js'
+
 export const
-    addArrayPluck = (force = false) => {
-        if (typeof Array.prototype.pluck !== 'function' || force)
-            Array.prototype.pluck = function (name) {
+    isArray = array => Array.isArray(array),
+    addArrayPluck = (array = null, force = false) => {
+        array = isArray(array) ? array : null
+        if (typeof (array || Array.prototype).pluck !== 'function' || force)
+            (array || Array.prototype).pluck = function (name) {
                 let sol = []
                 for (var i in this) {
                     if (this[i].hasOwnProperty(name)) sol.push(this[i][name])
@@ -9,14 +13,15 @@ export const
                 return sol
             }
     },
-    addArrayFindItemByAttr = (force = false) => {
-        if (typeof Array.prototype.findItemByAttr !== 'function' || force)
-            Array.prototype.findItemByAttr = function (attr, val, default_ = null) {
+    addArrayFindItemByAttr = (array = null, force = false) => {
+        array = isArray(array) ? array : null
+        if (typeof (array || Array.prototype).findItemByAttr !== 'function' || force)
+            (array || Array.prototype).findItemByAttr = function (attr, val, default_ = null) {
                 let self = this,
                     item = default_
                 for (let i in self) {
                     let obj = self[i]
-                    if (typeof obj === 'object' /*&& !Array.isArray(obj)*/ && obj !== null) {
+                    if (isObject(obj)) {
                         if (obj.hasOwnProperty(attr) && obj[attr] == val) {
                             item = obj
                             break
@@ -26,23 +31,25 @@ export const
                 return item
             }
     },
-    addArrayFilterByItemAttr = (force = false) => {
-        if (typeof Array.prototype.filterByItemAttr !== 'function' || force)
-            Array.prototype.filterByItemAttr = function (attr, val) {
+    addArrayFilterByItemAttr = (array = null, force = false) => {
+        array = isArray(array) ? array : null
+        if (typeof (array || Array.prototype).filterByItemAttr !== 'function' || force)
+            (array || Array.prototype).filterByItemAttr = function (attr, val) {
                 let self = this,
                     items = []
                 for (let i in self) {
                     let obj = self[i]
-                    if (typeof obj === 'object' /*&& !Array.isArray(obj)*/ && obj !== null) {
+                    if (isObject(obj)) {
                         if (obj.hasOwnProperty(attr) && obj[attr] == val) items.push(obj)
                     }
                 }
                 return items
             }
     },
-    addArraySum = (force = false) => {
-        if (typeof Array.prototype.sum !== 'function' || force)
-            Array.prototype.sum = function (param = null, is_property = false) {
+    addArraySum = (array = null, force = false) => {
+        array = isArray(array) ? array : null
+        if (typeof (array || Array.prototype).sum !== 'function' || force)
+            (array || Array.prototype).sum = function (param = null, is_property = false) {
                 let total = 0
                 if (typeof param == 'function') this.forEach(element => total += param(element))
                 else if (!!is_property) this.forEach(element => total += element[param])
