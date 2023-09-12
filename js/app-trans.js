@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 /**
  * @link https://dev.to/4unkur/how-to-use-laravel-translations-in-js-vue-files-ia
  */

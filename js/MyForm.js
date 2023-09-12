@@ -9,7 +9,15 @@ import axios from 'axios'
 class MyForm {
     excepts = ['originalData', 'errors', 'excepts']
 
-    constructor(data = {}) {
+    constructor(data = {}, options = {}) {
+        let defOptions = {
+            /**
+             * check if response data has <b>success</b> property and it's true
+             */
+            check_success: true,
+        }
+        options = isObject(options) ? options : {}
+        fill2Objects(options, defOptions)
         /**
          * @author MHK
          * @type {any}
@@ -39,10 +47,10 @@ class MyForm {
                         }
                     })
                         .then(response => {
-                            if (response.data.success) {
-                                resolve(response.data)
-                            }
-                            reject(response)
+                            if (defOptions.check_success) {
+                                if (response.data.success) resolve(response.data)
+                                else reject(response)
+                            } else resolve(response.data)
                         })
                         .catch(error => {
                             onFail(error.response?.data?.errors)
@@ -61,13 +69,13 @@ class MyForm {
                 return new Promise((resolve, reject) => {
                     axios[requestType](url, data)
                         .then(response => {
-                            if (response.data.success) {
-                                resolve(response.data)
-                            }
-                            reject(response)
+                            if (defOptions.check_success) {
+                                if (response.data.success) resolve(response.data)
+                                else reject(response)
+                            } else resolve(response.data)
+
                         })
                         .catch(error => {
-                            console.log(error)
                             onFail(error.response?.data?.errors)
                             reject(error.response?.data)
                         })
