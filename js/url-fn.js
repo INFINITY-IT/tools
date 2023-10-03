@@ -8,4 +8,5 @@ export const
         let url = app_url(secure) + (app_url(secure).endsWith('/') ? '' : '/')
         path = path.startsWith('/') ? path.slice(1) : path
         return url + path
-    }
+    },
+    redirectTo = (url) => openLink(url, '_self')
