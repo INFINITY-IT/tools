@@ -20,6 +20,9 @@ class TranslationServiceProvider extends ServiceProvider
     {
         Cache::rememberForever('translations', function () {
             $translations = collect();
+            $locales = config('app.locales');
+            if(!is_array($locales))
+                throw new \Exception('app.locales must be defined and must be an array');
             foreach (config('app.locales') as $locale) { // suported locales
                 $translations[$locale] = [
                     #'php' => $this->phpTranslations($locale),
