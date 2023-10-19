@@ -7,7 +7,7 @@ export const
      * @param fixedElementSelectors
      */
     scrollToTarget = function (target, ...fixedElementSelectors) {
-        addArraySum(true)
+        addArraySum(fixedElementSelectors)
         let $target = target instanceof Element ? target : document.querySelector(target),
             margeTop = 5,
             spacer = fixedElementSelectors.sum(fixedElementSelector => document.querySelector(fixedElementSelector) ? document.querySelector(fixedElementSelector).offsetHeight : 0)
