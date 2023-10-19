@@ -28,9 +28,17 @@ export const
                 icon: icon,
                 buttons: [cancelButtonText, confirmButtonText],
                 dangerMode: dangerMode,
-            }).then(confirm => confirm ? resolve() : reject())
+            }).then(confirm => confirm && resolve())
         })
     },
+    /**
+     * @param {object} options
+     * @param {string} options.text - The text of the alert
+     * @param {string} options.title - The title of the alert
+     * @param {string} options.icon - The icon of the alert
+     * @param {string} options.confirmText - The text of the confirm button
+     * @param {boolean} options.dangerMode - Whether the alert should be red
+     */
     swalInfo = (options = {}) => {
         options = isObject(options) ? options : {}
         let
@@ -47,10 +55,26 @@ export const
             dangerMode: dangerMode,
         })
     },
+    /**
+     * @param {object} options
+     * @param {string} options.text - The text of the alert
+     * @param {string} options.title - The title of the alert
+     * @param {string} options.icon - The icon of the alert
+     * @param {string} options.confirmText - The text of the confirm button
+     * @param {boolean} options.dangerMode - Whether the alert should be red
+     */
     swalSuccess = (options = {}) => {
         options = isObject(options) ? options : {}
         return swalInfo({icon: 'success', ...options})
     },
+    /**
+     * @param {object} options
+     * @param {string} options.text - The text of the alert
+     * @param {string} options.title - The title of the alert
+     * @param {string} options.icon - The icon of the alert
+     * @param {string} options.confirmText - The text of the confirm button
+     * @param {boolean} options.dangerMode - Whether the alert should be red
+     */
     swalError = (options = {}) => {
         options = isObject(options) ? options : {}
         return swalInfo({icon: 'error', dangerMode: true, ...options})
