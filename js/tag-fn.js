@@ -11,6 +11,7 @@ export const
         let $target = target instanceof Element ? target : document.querySelector(target),
             margeTop = 5,
             spacer = fixedElementSelectors.sum(fixedElementSelector => document.querySelector(fixedElementSelector) ? document.querySelector(fixedElementSelector).offsetHeight : 0)
+        if (!$target) return
         $target.style.scrollMarginTop = (spacer + margeTop) + 'px'
         $target.scrollIntoView({
             behavior: 'smooth',

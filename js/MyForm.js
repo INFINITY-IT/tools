@@ -9,11 +9,13 @@ import axios from 'axios'
 class MyForm {
     excepts = ['originalData', 'errors', 'excepts']
 
+    /**
+     * @param {Object} data - Request data.
+     * @param {Object} options - Request options.
+     * @param {boolean} options.check_success - check if response data has <b>success</b> property and it's true
+     */
     constructor(data = {}, options = {}) {
         let defOptions = {
-            /**
-             * check if response data has <b>success</b> property and it's true
-             */
             check_success: true,
         }
         options = isObject(options) ? options : {}

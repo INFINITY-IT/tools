@@ -31,6 +31,21 @@ const HasPagination = {
         },
         fillPaginationData(data) {
             fill2Objects(data, this.items)
+            if (this.snakeCase) {
+                this.items.currentPage = this.items.current_page
+                this.items.lastPage = this.items.last_page
+                this.items.perPage = this.items.per_page
+            } else {
+                this.items.current_page = this.items.currentPage
+                this.items.last_page = this.items.lastPage
+                this.items.per_page = this.items.perPage
+            }
+        },
+        setPerPage(per_page) {
+            if (this.snakeCase)
+                this.items.per_page = per_page
+            else
+                this.items.perPage = per_page
         },
     },
     computed: {
