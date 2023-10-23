@@ -28,6 +28,10 @@ class MyForm {
         for (let field in data) {
             this[field] = data[field]
         }
+        /**
+         * @deprecated use {<br>.hasError(...),<br>.ifHasError(...),<br>.AnyError(...),<br>.getError(...),<br>.clearError(...)<br>} instead
+         * will be removed in stable version
+         */
         this.errors = new FormError
         let my_form = this
         const
