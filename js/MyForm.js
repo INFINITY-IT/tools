@@ -1,6 +1,6 @@
 import FormError from './FormError.js'
 import {fill2Objects, isObject} from './object-fn.js'
-import axios from 'axios'
+import {getRequester} from './requester.js'
 
 /**
  * @version Beta
@@ -24,7 +24,8 @@ class MyForm {
          * @author MHK
          * @type {any}
          */
-        const originalData = JSON.parse(JSON.stringify(data))
+        const originalData = JSON.parse(JSON.stringify(data)),
+            requester = getRequester()
         for (let field in data) {
             this[field] = data[field]
         }
@@ -47,7 +48,7 @@ class MyForm {
                         break
                 }
                 return new Promise((resolve, reject) => {
-                    axios[requestType](url, data, {
+                    requester[requestType](url, data, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
@@ -73,7 +74,7 @@ class MyForm {
                         break
                 }
                 return new Promise((resolve, reject) => {
-                    axios[requestType](url, data)
+                    requester[requestType](url, data)
                         .then(response => {
                             if (defOptions.check_success) {
                                 if (response.data.success) resolve(response.data)

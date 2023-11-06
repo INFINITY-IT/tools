@@ -11,6 +11,7 @@ export * from './crypt-fn.js'
 export * from './csrf-fn.js'
 export * from './config-fn.js'
 export * from './array-fn.js'
+export * from './requester.js'
 /**
  * use with Vue.js 2
  */
