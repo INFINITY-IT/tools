@@ -170,6 +170,9 @@ class MyForm {
             this.errors.clear(input)
             if (typeof cb === 'function') cb()
         }
+        this.clearErrors = function (...attrs) {
+            attrs.forEach(attr => this.clearError(attr))
+        }
         this.AnyError = function (...attrs) {
             let has_error = false
             attrs.forEach(attr => has_error ||= this.errors.has(attr))
