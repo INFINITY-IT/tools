@@ -182,10 +182,10 @@ class MyForm {
             return this.errors.get(name)
         }
         this.getAnyError = function (...attrs) {
-            attrs.forEach(attr => {
+            for (let attr of attrs) {
                 if (this.hasError(attr))
                     return this.getError(attr)
-            })
+            }
             return null
         }
     }
