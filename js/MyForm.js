@@ -178,6 +178,13 @@ class MyForm {
         this.getError = function (name) {
             return this.errors.get(name)
         }
+        this.getAnyError = function (...attrs) {
+            attrs.forEach(attr => {
+                if (this.hasError(attr))
+                    return this.getError(attr)
+            })
+            return null
+        }
     }
 }
 
