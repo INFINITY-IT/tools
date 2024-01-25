@@ -171,13 +171,10 @@ class MyForm {
             if (typeof cb === 'function') cb()
         }
         this.clearErrors = function (...attrs) {
-            attrs.forEach(this.clearError)
+            attrs.forEach(attr => this.clearError(attr))
         }
         this.AnyError = function (...attrs) {
             return this.hasError(attrs)
-            let has_error = false
-            attrs.forEach(attr => has_error ||= this.errors.has(attr))
-            return has_error
         }
         this.getError = function (name) {
             return this.errors.get(name)
