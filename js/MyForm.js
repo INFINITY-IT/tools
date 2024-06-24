@@ -17,6 +17,7 @@ class MyForm {
     constructor(data = {}, options = {}) {
         let defOptions = {
             check_success: true,
+            keep_error: false,
         }
         options = isObject(options) ? options : {}
         fill2Objects(options, defOptions)
@@ -61,7 +62,10 @@ class MyForm {
                         })
                         .catch(error => {
                             onFail(error.response?.data?.errors)
-                            reject(error.response?.data)
+                            if (defOptions.keep_error)
+                                reject(error)
+                            else
+                                reject(error.response?.data)
                         })
                 })
             },
@@ -80,11 +84,13 @@ class MyForm {
                                 if (response.data.success) resolve(response.data)
                                 else reject(response)
                             } else resolve(response.data)
-
                         })
                         .catch(error => {
                             onFail(error.response?.data?.errors)
-                            reject(error.response?.data)
+                            if (defOptions.keep_error)
+                                reject(error)
+                            else
+                                reject(error.response?.data)
                         })
                 })
             }
