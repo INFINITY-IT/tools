@@ -41,7 +41,7 @@ class TranslationServiceProvider extends ServiceProvider
 	private function jsonTranslations($locale): mixed
 	{
 		$path = resource_path("lang/$locale.json");
-		$path2 = app_path("lang/$locale.json");
+		$path2 = base_path("lang/$locale.json");
 		if (is_string($path2) && is_readable($path2)) {
 			return json_decode(file_get_contents($path2), true);
 		} elseif (is_string($path) && is_readable($path)) {
@@ -57,7 +57,7 @@ class TranslationServiceProvider extends ServiceProvider
 	private function phpTranslations($locale): Collection
 	{
 		$path = resource_path("lang/$locale");
-		$path2 = app_path("lang/$locale");
+		$path2 = base_path("lang/$locale");
 		if (is_string($path2) && is_readable($path2))
 			return collect(File::allFiles($path2))->flatMap(function ($file) use ($locale) {
 				$key = ($translation = $file->getBasename('.php'));
