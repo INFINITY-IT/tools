@@ -41,7 +41,7 @@ composer require "infinity-it/tools"
 ### 4. usage
 
 ```javascript
-import { /* ... */ } from 'tools'
+import { /* ... */} from 'tools'
 ```
 
 ### 5. route
@@ -71,15 +71,22 @@ Route::post('refreshToken', 'refreshToken')->withoutMiddleware(VerifyCsrfToken::
 import {__, trans} from 'tools'
 ```
 
-- config/app.php
-
-```php
-'providers' => [
-    ...
-    /*
-    * Package Service Providers...
-    */
-    InfinityIt\Tools\Providers\TranslationServiceProvider::class,
-    ...
-]
-```
+- **Provider**
+  - **Laravel 10** and below: `config/app.php`
+    ```php
+    'providers' => [
+        ...
+        /*
+        * Package Service Providers...
+        */
+        InfinityIt\Tools\Providers\TranslationServiceProvider::class,
+        ...
+    ]
+    ```
+  - **Laravel 11** and above : `bootstrap/providers.php`
+    ```php
+    return [
+        ...
+        InfinityIt\Tools\Providers\TranslationServiceProvider::class,
+    ];
+    ```
