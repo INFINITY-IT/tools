@@ -42,10 +42,10 @@ class TranslationServiceProvider extends ServiceProvider
 	{
 		$path = resource_path("lang/$locale.json");
 		$path2 = app_path("lang/$locale.json");
-		if (is_string($path) && is_readable($path)) {
-			return json_decode(file_get_contents($path), true);
-		} elseif (is_string($path2) && is_readable($path2)) {
+		if (is_string($path2) && is_readable($path2)) {
 			return json_decode(file_get_contents($path2), true);
+		} elseif (is_string($path) && is_readable($path)) {
+			return json_decode(file_get_contents($path), true);
 		}
 		return [];
 	}
@@ -58,13 +58,13 @@ class TranslationServiceProvider extends ServiceProvider
 	{
 		$path = resource_path("lang/$locale");
 		$path2 = app_path("lang/$locale");
-		if (is_string($path) && is_readable($path))
-			return collect(File::allFiles($path))->flatMap(function ($file) use ($locale) {
+		if (is_string($path2) && is_readable($path2))
+			return collect(File::allFiles($path2))->flatMap(function ($file) use ($locale) {
 				$key = ($translation = $file->getBasename('.php'));
 				return [$key => trans($translation, [], $locale)];
 			});
-		elseif (is_string($path2) && is_readable($path2))
-			return collect(File::allFiles($path2))->flatMap(function ($file) use ($locale) {
+		elseif (is_string($path) && is_readable($path))
+			return collect(File::allFiles($path))->flatMap(function ($file) use ($locale) {
 				$key = ($translation = $file->getBasename('.php'));
 				return [$key => trans($translation, [], $locale)];
 			});
