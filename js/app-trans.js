@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import {isObject} from './object-fn.js'
 
 /**
  * @link https://dev.to/4unkur/how-to-use-laravel-translations-in-js-vue-files-ia
@@ -21,10 +22,11 @@ export const
                 ? window._translations[window._locale].json[key]
                 : key
         }
-        if (!Array.isArray(replace) && replace !== undefined) replace = [replace]
-        _.forEach(replace, (value, key) => {
-            translation = translation.replace(':' + key, value)
-        })
+        if (!Array.isArray(replace) && replace !== undefined) replace = Object.assign({}, replace)
+        if (isObject(replace))
+            _.forEach(replace, (value, key) => {
+                translation = translation.replace(':' + key, value)
+            })
         return translation
     },
     trans = (key, replace) => __(key, replace)
